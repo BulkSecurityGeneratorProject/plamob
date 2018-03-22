@@ -1,0 +1,11 @@
+version: '2'
+services:
+    plamob-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/plamob/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=plamob
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
