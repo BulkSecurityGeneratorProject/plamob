@@ -1,6 +1,7 @@
 package be.civadis.plamob.web.rest;
 
 import be.civadis.plamob.config.Constants;
+import be.civadis.plamob.web.rest.vm.RessourceVM;
 import com.codahale.metrics.annotation.Timed;
 import be.civadis.plamob.domain.User;
 import be.civadis.plamob.repository.UserRepository;
@@ -104,6 +105,33 @@ public class UserResource {
             return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
                 .headers(HeaderUtil.createAlert( "userManagement.created", newUser.getLogin()))
                 .body(newUser);
+        }
+    }
+
+    /**
+     * POST /users/ressourceVM
+     * <p>
+     *
+     * @param ressourceVM
+     * @return
+     * @throws URISyntaxException
+     */
+    @PostMapping("/users/ressourceVM")
+    public ResponseEntity<RessourceVM> createUserAndRessource(@Valid @RequestBody RessourceVM ressourceVM)
+        throws URISyntaxException {
+        log.debug("REST request to save User and Ressource: {}", ressourceVM);
+        if (ressourceVM.getId() != null) {
+            throw new BadRequestAlertException("A new user cannot already have an ID", "userManagement", "idexists");
+            // Lowercase the user login before comparing with database
+        } else if (userRepository.findOneByLogin(ressourceVM.getLogin().toLowerCase()).isPresent()) {
+            throw new LoginAlreadyUsedException();
+        } else if (userRepository.findOneByEmailIgnoreCase(ressourceVM.getEmail()).isPresent()) {
+            throw new EmailAlreadyUsedException();
+        } else {
+            RessourceVM newRessourceVM = userService.createUserAndRessource(ressourceVM);
+            //mailService.sendCreationEmail(newUser);
+
+            return ResponseEntity.ok().build();
         }
     }
 

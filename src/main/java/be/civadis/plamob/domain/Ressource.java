@@ -36,6 +36,10 @@ public class Ressource implements Serializable {
     @JoinColumn(unique = true)
     private Profil profil;
 
+    @OneToOne
+    @MapsId
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -96,6 +100,15 @@ public class Ressource implements Serializable {
     public void setProfil(Profil profil) {
         this.profil = profil;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

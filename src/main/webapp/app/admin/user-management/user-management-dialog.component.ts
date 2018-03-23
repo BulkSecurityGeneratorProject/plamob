@@ -6,6 +6,9 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { UserModalService } from './user-modal.service';
 import { JhiLanguageHelper, User, UserService } from '../../shared';
+import { RessourceVM } from './ressource-vm/ressource-vm';
+import { RessourceVMService } from './ressource-vm/ressource-vm.service';
+import { Profil, ProfilService } from '../../entities/profil';
 
 @Component({
     selector: 'jhi-user-mgmt-dialog',
@@ -14,15 +17,21 @@ import { JhiLanguageHelper, User, UserService } from '../../shared';
 export class UserMgmtDialogComponent implements OnInit {
 
     user: User;
+    ressourceVM: RessourceVM = new RessourceVM();
     languages: any[];
     authorities: any[];
     isSaving: Boolean;
+    isRessourceMobile: Boolean;
+    profils: Profil[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private languageHelper: JhiLanguageHelper,
         private userService: UserService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+
+        private ressourceVMService: RessourceVMService,
+        private profilService: ProfilService
     ) {}
 
     ngOnInit() {
@@ -34,6 +43,7 @@ export class UserMgmtDialogComponent implements OnInit {
         this.languageHelper.getAll().then((languages) => {
             this.languages = languages;
         });
+        this.profilService.query().subscribe((profils) => this.profils = profils.body);
     }
 
     clear() {
@@ -45,7 +55,9 @@ export class UserMgmtDialogComponent implements OnInit {
         if (this.user.id !== null) {
             this.userService.update(this.user).subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
         } else {
-            this.userService.create(this.user).subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
+           this.ressourceVMService.create(this.ressourceVM).subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
+           this.ressourceVMService.log(this.ressourceVM);
+           // this.userService.create(this.user).subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
         }
     }
 

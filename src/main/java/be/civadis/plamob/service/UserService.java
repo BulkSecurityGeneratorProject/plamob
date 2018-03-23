@@ -1,17 +1,22 @@
 package be.civadis.plamob.service;
 
 import be.civadis.plamob.domain.Authority;
+import be.civadis.plamob.domain.Ressource;
 import be.civadis.plamob.domain.User;
+import be.civadis.plamob.domain.enumeration.TYPE_RESSOURCE;
 import be.civadis.plamob.repository.AuthorityRepository;
 import be.civadis.plamob.config.Constants;
+import be.civadis.plamob.repository.RessourceRepository;
 import be.civadis.plamob.repository.UserRepository;
 import be.civadis.plamob.security.AuthoritiesConstants;
 import be.civadis.plamob.security.SecurityUtils;
 import be.civadis.plamob.service.util.RandomUtil;
 import be.civadis.plamob.service.dto.UserDTO;
 
+import be.civadis.plamob.web.rest.vm.RessourceVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -38,6 +43,9 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
+
+    @Autowired
+    private RessourceRepository ressourceRepository;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
@@ -131,6 +139,51 @@ public class UserService {
         userRepository.save(user);
         log.debug("Created Information for User: {}", user);
         return user;
+    }
+
+    public RessourceVM createUserAndRessource (RessourceVM ressourceVM) {
+        // Create User
+        User user = new User();
+        Set<Authority> authorities = new HashSet<>();
+        ressourceVM.getAuthorities().forEach(
+            e -> {
+                Authority authority = new Authority();
+                authority.setName(e);
+                authorities.add(authority);
+            });
+
+        user.setLogin(ressourceVM.getLogin());
+        user.setLastName(ressourceVM.getLastName());
+        user.setFirstName(ressourceVM.getFirstName());
+        user.setEmail(ressourceVM.getEmail());
+        user.setAuthorities(authorities);
+        user.setLangKey("fr");
+        user = this.userRepository.save(user);
+
+        // Create the ressource associatied with the user
+        Ressource ressource = new Ressource();
+        ressource.setTrigramme(ressourceVM.getTigramme());
+        ressource.setTel(ressourceVM.getTelephone());
+        TYPE_RESSOURCE typeRessource = getTypeRessource(ressourceVM.getTypeRessource());
+        if( typeRessource != null)
+            ressource.setTypeRess(typeRessource);
+        ressource.setUser(user);
+        this.ressourceRepository.save(ressource);
+
+        ressourceVM.setId(user.getId());
+
+        return ressourceVM;
+    }
+
+    private TYPE_RESSOURCE getTypeRessource(String typeRess) {
+        TYPE_RESSOURCE typeRessource = null;
+        switch (typeRess) {
+            case "DOM": typeRessource = TYPE_RESSOURCE.DOM;
+            break;
+            case "MOB": typeRessource = TYPE_RESSOURCE.MOB;
+        }
+
+        return typeRessource;
     }
 
     /**

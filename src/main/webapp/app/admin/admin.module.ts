@@ -2,6 +2,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { PlamobSharedModule } from '../shared';
+
+import { RessourceVMService } from './user-management/ressource-vm/ressource-vm.service';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 import {
@@ -66,7 +68,8 @@ import {
         LogsService,
         UserResolvePagingParams,
         UserResolve,
-        UserModalService
+        UserModalService,
+        RessourceVMService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
