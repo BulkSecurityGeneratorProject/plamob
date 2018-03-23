@@ -1,0 +1,24 @@
+
+{
+    "plamobApp": {
+        "journalSuivi" : {
+            "home": {
+                "title": "Journal Suivis",
+                "createLabel": "Create a new Journal Suivi",
+                "createOrEditLabel": "Create or edit a Journal Suivi"
+            },
+            "created": "A new Journal Suivi is created with identifier {{ param }}",
+            "updated": "A Journal Suivi is updated with identifier {{ param }}",
+            "deleted": "A Journal Suivi is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Journal Suivi {{ id }}?"
+            },
+            "detail": {
+                "title": "Journal Suivi"
+            },
+            "date": "Date",
+            "evenement": "Evenement",
+            "mission": "Mission"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Affectation.
+    -->
+    <changeSet id="20180323085119-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="profil_id"
+                                 baseTableName="affectation"
+                                 constraintName="fk_affectation_profil_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profil"/>
+
+        <addForeignKeyConstraint baseColumnNames="affectation_demandee_par_id"
+                                 baseTableName="affectation"
+                                 constraintName="fk_affectation_affectation_demandee_par_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ressource"/>
+
+        <addForeignKeyConstraint baseColumnNames="affectation_validee_par_id"
+                                 baseTableName="affectation"
+                                 constraintName="fk_affectation_affectation_validee_par_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ressource"/>
+
+        <addForeignKeyConstraint baseColumnNames="ressource_affectee_id"
+                                 baseTableName="affectation"
+                                 constraintName="fk_affectation_ressource_affectee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ressource"/>
+
+        <addForeignKeyConstraint baseColumnNames="livrable_id"
+                                 baseTableName="affectation"
+                                 constraintName="fk_affectation_livrable_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="livrable"/>
+
+    </changeSet>
+</databaseChangeLog>

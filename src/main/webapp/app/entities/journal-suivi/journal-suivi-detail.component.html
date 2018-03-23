@@ -1,0 +1,36 @@
+
+<div *ngIf="journalSuivi">
+    <h2><span jhiTranslate="plamobApp.journalSuivi.detail.title">Journal Suivi</span> {{journalSuivi.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plamobApp.journalSuivi.date">Date</span></dt>
+        <dd>
+            <span>{{journalSuivi.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.journalSuivi.evenement">Evenement</span></dt>
+        <dd>
+            <span>{{journalSuivi.evenement}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.journalSuivi.mission">Mission</span></dt>
+        <dd>
+            <div *ngIf="journalSuivi.missionId">
+                <a [routerLink]="['/mission', journalSuivi.missionId]">{{journalSuivi.missionId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'journal-suivi/'+ journalSuivi.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

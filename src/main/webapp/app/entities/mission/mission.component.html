@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="plamobApp.mission.home.title">Missions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-mission" [routerLink]="['/', { outlets: { popup: ['mission-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="plamobApp.mission.home.createLabel">
+            Create new Mission
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="missions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="resume"><span jhiTranslate="plamobApp.mission.resume">Resume</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="objectif"><span jhiTranslate="plamobApp.mission.objectif">Objectif</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="delai"><span jhiTranslate="plamobApp.mission.delai">Delai</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="technologie"><span jhiTranslate="plamobApp.mission.technologie">Technologie</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="autre"><span jhiTranslate="plamobApp.mission.autre">Autre</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="etat"><span jhiTranslate="plamobApp.mission.etat">Etat</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="domaineConcerneLibelle"><span jhiTranslate="plamobApp.mission.domaineConcerne">Domaine Concerne</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="missionDefinitParId"><span jhiTranslate="plamobApp.mission.missionDefinitPar">Mission Definit Par</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let mission of missions ;trackBy: trackId">
+                <td><a [routerLink]="['../mission', mission.id ]">{{mission.id}}</a></td>
+                <td>{{mission.resume}}</td>
+                <td>{{mission.objectif}}</td>
+                <td>{{mission.delai}}</td>
+                <td>{{mission.technologie}}</td>
+                <td>{{mission.autre}}</td>
+                <td jhiTranslate="{{'plamobApp.ETAT_MISSION.' + mission.etat}}">{{mission.etat}}</td>
+                <td>
+                    <div *ngIf="mission.domaineConcerneId">
+                        <a [routerLink]="['../domaine', mission.domaineConcerneId  ]" >{{mission.domaineConcerneLibelle}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="mission.missionDefinitParId">
+                        <a [routerLink]="['../ressource', mission.missionDefinitParId  ]" >{{mission.missionDefinitParId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../mission', mission.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'mission/'+ mission.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'mission/'+ mission.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

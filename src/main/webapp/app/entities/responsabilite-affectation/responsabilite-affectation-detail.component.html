@@ -1,0 +1,40 @@
+
+<div *ngIf="responsabiliteAffectation">
+    <h2><span jhiTranslate="plamobApp.responsabiliteAffectation.detail.title">Responsabilite Affectation</span> {{responsabiliteAffectation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plamobApp.responsabiliteAffectation.affectation">Affectation</span></dt>
+        <dd>
+            <div *ngIf="responsabiliteAffectation.affectationId">
+                <a [routerLink]="['/affectation', responsabiliteAffectation.affectationId]">{{responsabiliteAffectation.affectationId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.responsabiliteAffectation.ressourceMobile">Ressource Mobile</span></dt>
+        <dd>
+            <div *ngIf="responsabiliteAffectation.ressourceMobileId">
+                <a [routerLink]="['/ressource', responsabiliteAffectation.ressourceMobileId]">{{responsabiliteAffectation.ressourceMobileId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.responsabiliteAffectation.responsableRessourceMobile">Responsable Ressource Mobile</span></dt>
+        <dd>
+            <div *ngIf="responsabiliteAffectation.responsableRessourceMobileId">
+                <a [routerLink]="['/ressource', responsabiliteAffectation.responsableRessourceMobileId]">{{responsabiliteAffectation.responsableRessourceMobileId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'responsabilite-affectation/'+ responsabiliteAffectation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

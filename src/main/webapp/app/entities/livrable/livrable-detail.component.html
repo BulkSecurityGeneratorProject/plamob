@@ -1,0 +1,44 @@
+
+<div *ngIf="livrable">
+    <h2><span jhiTranslate="plamobApp.livrable.detail.title">Livrable</span> {{livrable.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plamobApp.livrable.numSeq">Num Seq</span></dt>
+        <dd>
+            <span>{{livrable.numSeq}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.livrable.description">Description</span></dt>
+        <dd>
+            <span>{{livrable.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.livrable.dateFin">Date Fin</span></dt>
+        <dd>
+            <span>{{livrable.dateFin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.livrable.remarques">Remarques</span></dt>
+        <dd>
+            <span>{{livrable.remarques}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.livrable.mission">Mission</span></dt>
+        <dd>
+            <div *ngIf="livrable.missionId">
+                <a [routerLink]="['/mission', livrable.missionId]">{{livrable.missionId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'livrable/'+ livrable.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

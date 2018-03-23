@@ -1,0 +1,9 @@
+{
+    "plamobApp": {
+        "ETAT_AFFECTATION" : {
+            "null": "",
+            "ATTENTE_VALIDATION": "ATTENTE_VALIDATION",
+            "VALIDEE": "VALIDEE"
+        }
+    }
+}

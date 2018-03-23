@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span jhiTranslate="plamobApp.livrable.home.title">Livrables</span>
+        <button class="btn btn-primary float-right jh-create-entity create-livrable" [routerLink]="['/', { outlets: { popup: ['livrable-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="plamobApp.livrable.home.createLabel">
+            Create new Livrable
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="livrables">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="plamobApp.livrable.numSeq">Num Seq</span></th>
+            <th><span jhiTranslate="plamobApp.livrable.description">Description</span></th>
+            <th><span jhiTranslate="plamobApp.livrable.dateFin">Date Fin</span></th>
+            <th><span jhiTranslate="plamobApp.livrable.remarques">Remarques</span></th>
+            <th><span jhiTranslate="plamobApp.livrable.mission">Mission</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let livrable of livrables ;trackBy: trackId">
+                <td><a [routerLink]="['../livrable', livrable.id ]">{{livrable.id}}</a></td>
+                <td>{{livrable.numSeq}}</td>
+                <td>{{livrable.description}}</td>
+                <td>{{livrable.dateFin | date:'mediumDate'}}</td>
+                <td>{{livrable.remarques}}</td>
+                <td>
+                    <div *ngIf="livrable.missionId">
+                        <a [routerLink]="['../mission', livrable.missionId  ]" >{{livrable.missionId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../livrable', livrable.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'livrable/'+ livrable.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'livrable/'+ livrable.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

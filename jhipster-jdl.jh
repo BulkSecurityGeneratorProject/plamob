@@ -1,0 +1,94 @@
+entity Domaine {
+    libelle String
+}
+entity Mission {
+	resume String,
+    objectif String,
+	delai String,
+    technologie String,
+    autre String,
+    etat ETAT_MISSION
+}
+
+entity Livrable {
+	numSeq Long,
+    description String,
+    dateFin LocalDate,
+    remarques String
+}
+
+entity JournalSuivi {
+	date LocalDate,
+    evenement String
+}
+
+entity Affectation {
+	dateDebut LocalDate,
+    dateFin LocalDate,
+    taux Long,
+    etat ETAT_AFFECTATION
+}
+
+entity Ressource {
+	trigramme String,
+    tel String,
+    typeRess TYPE_RESSOURCE
+}
+
+entity Profil {
+	description String 
+}
+
+entity ResponsabiliteAffectation {
+}
+
+enum TYPE_RESSOURCE {
+	MOB, DOM
+}
+
+enum ETAT_MISSION {
+	EN_ATTENTE,
+    EN_COURS,
+    TERMINEE
+}
+
+enum ETAT_AFFECTATION {
+	ATTENTE_VALIDATION,
+    VALIDEE
+}
+
+relationship OneToOne {
+	Affectation{profil} to Profil,
+    Ressource{profil} to Profil
+}
+
+relationship ManyToOne {
+	Affectation{affectationDemandeePar} to Ressource,
+    Affectation{affectationValideePar} to Ressource,
+    Affectation{ressourceAffectee} to Ressource,
+    Affectation{livrable} to Livrable
+}
+
+relationship ManyToOne {
+	Mission{domaineConcerne(libelle)} to Domaine,
+    Mission{missionDefinitPar} to Ressource,
+    Livrable{mission} to Mission,
+    JournalSuivi{mission} to Mission
+}
+
+relationship ManyToOne {
+	Domaine{responsable} to Ressource
+}
+
+relationship ManyToOne {
+	ResponsabiliteAffectation{affectation} to Affectation,
+    ResponsabiliteAffectation{ressourceMobile} to Ressource,
+    ResponsabiliteAffectation{responsableRessourceMobile} to Ressource
+}
+
+// Set pagination options
+paginate Mission with infinite-scroll
+
+service * with serviceClass
+
+dto * with mapstruct

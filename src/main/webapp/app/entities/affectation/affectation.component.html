@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span jhiTranslate="plamobApp.affectation.home.title">Affectations</span>
+        <button class="btn btn-primary float-right jh-create-entity create-affectation" [routerLink]="['/', { outlets: { popup: ['affectation-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="plamobApp.affectation.home.createLabel">
+            Create new Affectation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="affectations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.dateDebut">Date Debut</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.dateFin">Date Fin</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.taux">Taux</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.etat">Etat</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.profil">Profil</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.affectationDemandeePar">Affectation Demandee Par</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.affectationValideePar">Affectation Validee Par</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.ressourceAffectee">Ressource Affectee</span></th>
+            <th><span jhiTranslate="plamobApp.affectation.livrable">Livrable</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let affectation of affectations ;trackBy: trackId">
+                <td><a [routerLink]="['../affectation', affectation.id ]">{{affectation.id}}</a></td>
+                <td>{{affectation.dateDebut | date:'mediumDate'}}</td>
+                <td>{{affectation.dateFin | date:'mediumDate'}}</td>
+                <td>{{affectation.taux}}</td>
+                <td jhiTranslate="{{'plamobApp.ETAT_AFFECTATION.' + affectation.etat}}">{{affectation.etat}}</td>
+                <td>
+                    <div *ngIf="affectation.profilId">
+                        <a [routerLink]="['../profil', affectation.profilId  ]" >{{affectation.profilId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="affectation.affectationDemandeeParId">
+                        <a [routerLink]="['../ressource', affectation.affectationDemandeeParId  ]" >{{affectation.affectationDemandeeParId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="affectation.affectationValideeParId">
+                        <a [routerLink]="['../ressource', affectation.affectationValideeParId  ]" >{{affectation.affectationValideeParId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="affectation.ressourceAffecteeId">
+                        <a [routerLink]="['../ressource', affectation.ressourceAffecteeId  ]" >{{affectation.ressourceAffecteeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="affectation.livrableId">
+                        <a [routerLink]="['../livrable', affectation.livrableId  ]" >{{affectation.livrableId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../affectation', affectation.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'affectation/'+ affectation.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'affectation/'+ affectation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

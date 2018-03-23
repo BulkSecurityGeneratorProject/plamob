@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "profil",
+            "otherEntityName": "profil",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "affectation"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "affectationDemandeePar",
+            "otherEntityName": "ressource",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "affectationValideePar",
+            "otherEntityName": "ressource",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "ressourceAffectee",
+            "otherEntityName": "ressource",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "livrable",
+            "otherEntityName": "livrable",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateFin",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "taux",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "etat",
+            "fieldType": "ETAT_AFFECTATION",
+            "fieldValues": "ATTENTE_VALIDATION,VALIDEE"
+        }
+    ],
+    "changelogDate": "20180323085119",
+    "entityTableName": "affectation",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false
+}

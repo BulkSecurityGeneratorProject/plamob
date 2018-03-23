@@ -1,0 +1,58 @@
+
+<div *ngIf="mission">
+    <h2><span jhiTranslate="plamobApp.mission.detail.title">Mission</span> {{mission.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plamobApp.mission.resume">Resume</span></dt>
+        <dd>
+            <span>{{mission.resume}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.mission.objectif">Objectif</span></dt>
+        <dd>
+            <span>{{mission.objectif}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.mission.delai">Delai</span></dt>
+        <dd>
+            <span>{{mission.delai}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.mission.technologie">Technologie</span></dt>
+        <dd>
+            <span>{{mission.technologie}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.mission.autre">Autre</span></dt>
+        <dd>
+            <span>{{mission.autre}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.mission.etat">Etat</span></dt>
+        <dd>
+            <span jhiTranslate="{{'plamobApp.ETAT_MISSION.' + mission.etat}}">{{mission.etat}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.mission.domaineConcerne">Domaine Concerne</span></dt>
+        <dd>
+            <div *ngIf="mission.domaineConcerneId">
+                <a [routerLink]="['/domaine', mission.domaineConcerneId]">{{mission.domaineConcerneLibelle}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.mission.missionDefinitPar">Mission Definit Par</span></dt>
+        <dd>
+            <div *ngIf="mission.missionDefinitParId">
+                <a [routerLink]="['/ressource', mission.missionDefinitParId]">{{mission.missionDefinitParId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'mission/'+ mission.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

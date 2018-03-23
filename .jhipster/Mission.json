@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "domaineConcerne",
+            "otherEntityName": "domaine",
+            "otherEntityField": "libelle"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "missionDefinitPar",
+            "otherEntityName": "ressource",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "resume",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "objectif",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "delai",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "technologie",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "autre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "etat",
+            "fieldType": "ETAT_MISSION",
+            "fieldValues": "EN_ATTENTE,EN_COURS,TERMINEE"
+        }
+    ],
+    "changelogDate": "20180323085116",
+    "entityTableName": "mission",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,30 @@
+
+{
+    "plamobApp": {
+        "affectation" : {
+            "home": {
+                "title": "Affectations",
+                "createLabel": "Create a new Affectation",
+                "createOrEditLabel": "Create or edit a Affectation"
+            },
+            "created": "A new Affectation is created with identifier {{ param }}",
+            "updated": "A Affectation is updated with identifier {{ param }}",
+            "deleted": "A Affectation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Affectation {{ id }}?"
+            },
+            "detail": {
+                "title": "Affectation"
+            },
+            "dateDebut": "Date Debut",
+            "dateFin": "Date Fin",
+            "taux": "Taux",
+            "etat": "Etat",
+            "profil": "Profil",
+            "affectationDemandeePar": "Affectation Demandee Par",
+            "affectationValideePar": "Affectation Validee Par",
+            "ressourceAffectee": "Ressource Affectee",
+            "livrable": "Livrable"
+        }
+    }
+}

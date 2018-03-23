@@ -1,0 +1,68 @@
+
+<div *ngIf="affectation">
+    <h2><span jhiTranslate="plamobApp.affectation.detail.title">Affectation</span> {{affectation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="plamobApp.affectation.dateDebut">Date Debut</span></dt>
+        <dd>
+            <span>{{affectation.dateDebut | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.affectation.dateFin">Date Fin</span></dt>
+        <dd>
+            <span>{{affectation.dateFin | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.affectation.taux">Taux</span></dt>
+        <dd>
+            <span>{{affectation.taux}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.affectation.etat">Etat</span></dt>
+        <dd>
+            <span jhiTranslate="{{'plamobApp.ETAT_AFFECTATION.' + affectation.etat}}">{{affectation.etat}}</span>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.affectation.profil">Profil</span></dt>
+        <dd>
+            <div *ngIf="affectation.profilId">
+                <a [routerLink]="['/profil', affectation.profilId]">{{affectation.profilId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.affectation.affectationDemandeePar">Affectation Demandee Par</span></dt>
+        <dd>
+            <div *ngIf="affectation.affectationDemandeeParId">
+                <a [routerLink]="['/ressource', affectation.affectationDemandeeParId]">{{affectation.affectationDemandeeParId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.affectation.affectationValideePar">Affectation Validee Par</span></dt>
+        <dd>
+            <div *ngIf="affectation.affectationValideeParId">
+                <a [routerLink]="['/ressource', affectation.affectationValideeParId]">{{affectation.affectationValideeParId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.affectation.ressourceAffectee">Ressource Affectee</span></dt>
+        <dd>
+            <div *ngIf="affectation.ressourceAffecteeId">
+                <a [routerLink]="['/ressource', affectation.ressourceAffecteeId]">{{affectation.ressourceAffecteeId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="plamobApp.affectation.livrable">Livrable</span></dt>
+        <dd>
+            <div *ngIf="affectation.livrableId">
+                <a [routerLink]="['/livrable', affectation.livrableId]">{{affectation.livrableId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'affectation/'+ affectation.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

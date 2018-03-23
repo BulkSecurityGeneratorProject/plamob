@@ -1,0 +1,24 @@
+
+{
+    "plamobApp": {
+        "responsabiliteAffectation" : {
+            "home": {
+                "title": "Responsabilite Affectations",
+                "createLabel": "Create a new Responsabilite Affectation",
+                "createOrEditLabel": "Create or edit a Responsabilite Affectation"
+            },
+            "created": "A new Responsabilite Affectation is created with identifier {{ param }}",
+            "updated": "A Responsabilite Affectation is updated with identifier {{ param }}",
+            "deleted": "A Responsabilite Affectation is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Responsabilite Affectation {{ id }}?"
+            },
+            "detail": {
+                "title": "Responsabilite Affectation"
+            },
+            "affectation": "Affectation",
+            "ressourceMobile": "Ressource Mobile",
+            "responsableRessourceMobile": "Responsable Ressource Mobile"
+        }
+    }
+}

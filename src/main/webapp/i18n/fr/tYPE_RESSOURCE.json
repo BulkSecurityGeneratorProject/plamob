@@ -1,0 +1,9 @@
+{
+    "plamobApp": {
+        "TYPE_RESSOURCE" : {
+            "null": "",
+            "MOB": "MOB",
+            "DOM": "DOM"
+        }
+    }
+}

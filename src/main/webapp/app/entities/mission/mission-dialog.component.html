@@ -1,0 +1,72 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMissionLabel" jhiTranslate="plamobApp.mission.home.createOrEditLabel">Create or edit a Mission</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!mission.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="mission.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plamobApp.mission.resume" for="field_resume">Resume</label>
+            <input type="text" class="form-control" name="resume" id="field_resume"
+                [(ngModel)]="mission.resume" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plamobApp.mission.objectif" for="field_objectif">Objectif</label>
+            <input type="text" class="form-control" name="objectif" id="field_objectif"
+                [(ngModel)]="mission.objectif" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plamobApp.mission.delai" for="field_delai">Delai</label>
+            <input type="text" class="form-control" name="delai" id="field_delai"
+                [(ngModel)]="mission.delai" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plamobApp.mission.technologie" for="field_technologie">Technologie</label>
+            <input type="text" class="form-control" name="technologie" id="field_technologie"
+                [(ngModel)]="mission.technologie" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plamobApp.mission.autre" for="field_autre">Autre</label>
+            <input type="text" class="form-control" name="autre" id="field_autre"
+                [(ngModel)]="mission.autre" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plamobApp.mission.etat" for="field_etat">Etat</label>
+            <select class="form-control" name="etat" [(ngModel)]="mission.etat" id="field_etat" >
+                <option value="EN_ATTENTE">{{'plamobApp.ETAT_MISSION.EN_ATTENTE' | translate}}</option>
+                <option value="EN_COURS">{{'plamobApp.ETAT_MISSION.EN_COURS' | translate}}</option>
+                <option value="TERMINEE">{{'plamobApp.ETAT_MISSION.TERMINEE' | translate}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plamobApp.mission.domaineConcerne" for="field_domaineConcerne">Domaine Concerne</label>
+            <select class="form-control" id="field_domaineConcerne" name="domaineConcerne" [(ngModel)]="mission.domaineConcerneId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="domaineOption.id" *ngFor="let domaineOption of domaines; trackBy: trackDomaineById">{{domaineOption.libelle}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plamobApp.mission.missionDefinitPar" for="field_missionDefinitPar">Mission Definit Par</label>
+            <select class="form-control" id="field_missionDefinitPar" name="missionDefinitPar" [(ngModel)]="mission.missionDefinitParId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="ressourceOption.id" *ngFor="let ressourceOption of ressources; trackBy: trackRessourceById">{{ressourceOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

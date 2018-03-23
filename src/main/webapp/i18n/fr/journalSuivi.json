@@ -1,0 +1,24 @@
+
+{
+    "plamobApp": {
+        "journalSuivi" : {
+            "home": {
+                "title": "JournalSuivis",
+                "createLabel": "Créer un nouveau Journal Suivi",
+                "createOrEditLabel": "Créer ou éditer un Journal Suivi"
+            },
+            "created": "Un nouveau Journal Suivi a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Journal Suivi avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Journal Suivi avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Journal Suivi {{ id }} ?"
+            },
+            "detail": {
+                "title": "Journal Suivi"
+            },
+            "date": "Date",
+            "evenement": "Evenement",
+            "mission": "Mission"
+        }
+    }
+}

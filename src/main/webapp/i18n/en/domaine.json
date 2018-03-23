@@ -1,0 +1,23 @@
+
+{
+    "plamobApp": {
+        "domaine" : {
+            "home": {
+                "title": "Domaines",
+                "createLabel": "Create a new Domaine",
+                "createOrEditLabel": "Create or edit a Domaine"
+            },
+            "created": "A new Domaine is created with identifier {{ param }}",
+            "updated": "A Domaine is updated with identifier {{ param }}",
+            "deleted": "A Domaine is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Domaine {{ id }}?"
+            },
+            "detail": {
+                "title": "Domaine"
+            },
+            "libelle": "Libelle",
+            "responsable": "Responsable"
+        }
+    }
+}

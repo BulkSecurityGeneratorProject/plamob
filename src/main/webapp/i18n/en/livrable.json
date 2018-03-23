@@ -1,0 +1,26 @@
+
+{
+    "plamobApp": {
+        "livrable" : {
+            "home": {
+                "title": "Livrables",
+                "createLabel": "Create a new Livrable",
+                "createOrEditLabel": "Create or edit a Livrable"
+            },
+            "created": "A new Livrable is created with identifier {{ param }}",
+            "updated": "A Livrable is updated with identifier {{ param }}",
+            "deleted": "A Livrable is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Livrable {{ id }}?"
+            },
+            "detail": {
+                "title": "Livrable"
+            },
+            "numSeq": "Num Seq",
+            "description": "Description",
+            "dateFin": "Date Fin",
+            "remarques": "Remarques",
+            "mission": "Mission"
+        }
+    }
+}
