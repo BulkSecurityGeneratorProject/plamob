@@ -26,45 +26,162 @@
 
 
 <div [ngSwitch]="isAuthenticated()">
-<div class="container home-login" *ngSwitchCase="false">
-    <div>
-        <h2 class="h2">Gestion des ressources mobiles</h2>
-        <p class="lead">Traçabilité des missions et affectations</p>
-    </div>
-    <br>
-    <div>
-        <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">
-            <strong>Failed to sign in!</strong> Please check your credentials and try again.
+    <div class="container home-login" *ngSwitchCase="false">
+        <div>
+            <h2 class="h2">Gestion des ressources mobiles</h2>
+            <p class="lead">Traçabilité des missions et affectations</p>
         </div>
-    </div>
-    <div class="container">
-        <h4>Connexion</h4>
-        <hr>
-        <form class="form" role="form" (ngSubmit)="login()">
-            <div class="form-group">
-                <label for="username" jhiTranslate="global.form.username">Login</label>
-                <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}"
-                [(ngModel)]="username">
+        <br>
+        <div>
+            <div class="alert alert-danger" *ngIf="authenticationError" jhiTranslate="login.messages.error.authentication">
+                <strong>Failed to sign in!</strong> Please check your credentials and try again.
             </div>
-            <div class="form-group">
-                <label for="password" jhiTranslate="login.form.password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+        </div>
+        <div class="container">
+            <h4>Connexion</h4>
+            <hr>
+            <form class="form" role="form" (ngSubmit)="login()">
+                <div class="form-group">
+                    <label for="username" jhiTranslate="global.form.username">Login</label>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="{{'global.form.username.placeholder' | translate}}"
+                        [(ngModel)]="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" jhiTranslate="login.form.password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
                         [(ngModel)]="password">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="rememberMe">
+                        <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
+                        <span jhiTranslate="login.form.rememberme">Remember me</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary" jhiTranslate="login.form.button">Sign in</button>
+            </form>
+            <p></p>
+            <div class="alert alert-warning">
+                <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>
             </div>
-            <div class="form-check">
-                <label class="form-check-label" for="rememberMe">
-                    <input class="form-check-input" type="checkbox" name="rememberMe" id="rememberMe" [(ngModel)]="rememberMe" checked>
-                    <span jhiTranslate="login.form.rememberme">Remember me</span>
-                </label>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="true" class="fiche-mission">
+        <h2>
+            <span>Fiche missions</span>
+            <button class="btn btn-primary float-right jh-create-entity create-mission" 
+                    [routerLink]="['/nouvelle-mission']">
+                <span class="fa fa-plus"></span>
+                Ajouter une nouvelle mission
+            </button>
+        </h2>
+        <br>
+
+        <div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Fiches actives et futures
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Toutes
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="inputRecherche" placeholder="Recherche">
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary" jhiTranslate="login.form.button">Sign in</button>
-        </form>
-        <p></p>
-        <div class="alert alert-warning">
-            <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>
+            <br>
+            <br>
+
+            <div>
+                <div class="fiche-mission-elt">
+                    <p class="mission-elt font-weight-bold">Reprise des données du logiciel Acropole Taxes vers Onyx</p>
+                    <p class="mission-elt font-italic">ONYX-TAXES</p>
+                    <p class="mission-elt">Jean-Marie COLIN</p>
+                    <div class="row" style="width: 70%">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary">
+                                <span class="fa fa-edit"></span>
+                                Editer
+                            </button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-info">
+                                <span class="fa fa-newspaper-o"></span>
+                                Journal
+                            </button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-secondary">
+                                <span class="fa fa-file-pdf-o"></span>
+                                Export PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fiche-mission-elt">
+                    <p class="mission-elt font-weight-bold">Maintenance EOS</p>
+                    <p class="mission-elt font-italic">EOS</p>
+                    <p class="mission-elt">Patrick MARQUET, Serge BOUVARD, Mihai TOLEA, Laurent KEMPENEERS</p>
+                    <div class="row" style="width: 70%">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary">
+                                <span class="fa fa-edit"></span>
+                                Editer
+                            </button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-info">
+                                <span class="fa fa-newspaper-o"></span>
+                                Journal
+                            </button>
+
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-secondary">
+                                <span class="fa fa-file-pdf-o"></span>
+                                Export PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fiche-mission-elt">
+                    <p class="mission-elt font-weight-bold">Projet 7450 AMADEUS - POLDOM DG06</p>
+                    <p class="mission-elt font-italic">SPW</p>
+                    <p class="mission-elt">Geoffrey VAN DOOREN</p>
+                    <div class="row" style="width: 70%">
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary">
+                                <span class="fa fa-edit"></span>
+                                Editer
+                            </button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-info">
+                                <span class="fa fa-newspaper-o"></span>
+                                Journal
+                            </button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-secondary">
+                                <span class="fa fa-file-pdf-o"></span>
+                                Export PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
-
-

@@ -158,6 +158,11 @@ public class UserService {
         user.setEmail(ressourceVM.getEmail());
         user.setAuthorities(authorities);
         user.setLangKey("fr");
+        // Setting default password
+        String password = "123";
+        String encryptedPassword = passwordEncoder.encode(password);
+        user.setPassword(encryptedPassword);
+
         user = this.userRepository.save(user);
 
         // Create the ressource associatied with the user
@@ -177,10 +182,14 @@ public class UserService {
 
     private TYPE_RESSOURCE getTypeRessource(String typeRess) {
         TYPE_RESSOURCE typeRessource = null;
-        switch (typeRess) {
-            case "DOM": typeRessource = TYPE_RESSOURCE.DOM;
-            break;
-            case "MOB": typeRessource = TYPE_RESSOURCE.MOB;
+
+        if(typeRess != null) {
+            switch (typeRess) {
+                case "DOM": typeRessource = TYPE_RESSOURCE.DOM;
+                    break;
+                case "MOB": typeRessource = TYPE_RESSOURCE.MOB;
+                    break;
+            }
         }
 
         return typeRessource;

@@ -13,6 +13,8 @@ import {
     MissionDeleteDialogComponent,
     missionRoute,
     missionPopupRoute,
+    MissionVMComponent,
+    MissionNewComponent
 } from './';
 
 const ENTITY_STATES = [
@@ -32,6 +34,8 @@ const ENTITY_STATES = [
         MissionDeleteDialogComponent,
         MissionPopupComponent,
         MissionDeletePopupComponent,
+        MissionVMComponent,
+        MissionNewComponent
     ],
     entryComponents: [
         MissionComponent,
@@ -39,6 +43,8 @@ const ENTITY_STATES = [
         MissionPopupComponent,
         MissionDeleteDialogComponent,
         MissionDeletePopupComponent,
+        MissionVMComponent,
+        MissionNewComponent
     ],
     providers: [
         MissionService,

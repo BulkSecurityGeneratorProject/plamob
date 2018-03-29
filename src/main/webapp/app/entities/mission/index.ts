@@ -6,3 +6,7 @@ export * from './mission-delete-dialog.component';
 export * from './mission-detail.component';
 export * from './mission.component';
 export * from './mission.route';
+
+export * from './mission-vm.component';
+export * from './mission-vm.model';
+export * from './mission-new.component';

@@ -1,0 +1,123 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="GYL (generated)" id="1522242064835-1">
+        <addColumn tableName="affectation">
+            <column name="affectation_demandee_par_user_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-2">
+        <addColumn tableName="affectation">
+            <column name="affectation_validee_par_user_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-3">
+        <addColumn tableName="mission">
+            <column name="mission_definit_par_user_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-4">
+        <addColumn tableName="responsabilite_affectation">
+            <column name="responsable_ressource_mobile_user_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-5">
+        <addColumn tableName="domaine">
+            <column name="responsable_user_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-6">
+        <addColumn tableName="affectation">
+            <column name="ressource_affectee_user_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-7">
+        <addColumn tableName="responsabilite_affectation">
+            <column name="ressource_mobile_user_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-8">
+        <addColumn tableName="ressource">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-9">
+        <createIndex indexName="IX_ressourcePK" tableName="ressource" unique="true">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-10">
+        <addForeignKeyConstraint baseColumnNames="affectation_demandee_par_user_id" baseTableName="affectation" constraintName="FK1l52whca4l006xjh37yfmoho2" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="ressource"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-11">
+        <addForeignKeyConstraint baseColumnNames="affectation_validee_par_user_id" baseTableName="affectation" constraintName="FK508l4r2i0210pai7otqvohdj5" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="ressource"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-12">
+        <addForeignKeyConstraint baseColumnNames="ressource_mobile_user_id" baseTableName="responsabilite_affectation" constraintName="FK5vu7kcnr2vmu5a7bupbohentu" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="ressource"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-13">
+        <addForeignKeyConstraint baseColumnNames="responsable_user_id" baseTableName="domaine" constraintName="FKcfktceh6n1a08mcwewabpu9xa" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="ressource"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-14">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="ressource" constraintName="FKgj90r1j8v382jeglf61o0i4dm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-15">
+        <addForeignKeyConstraint baseColumnNames="responsable_ressource_mobile_user_id" baseTableName="responsabilite_affectation" constraintName="FKhp6x5mxv8761mlddj0t6e3mas" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="ressource"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-16">
+        <addForeignKeyConstraint baseColumnNames="mission_definit_par_user_id" baseTableName="mission" constraintName="FKkffnjer2re2kxfghrcas4xnx8" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="ressource"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-17">
+        <addForeignKeyConstraint baseColumnNames="ressource_affectee_user_id" baseTableName="affectation" constraintName="FKtrtrksokq0x8xs8jaji2k9ce5" deferrable="false" initiallyDeferred="false" referencedColumnNames="user_id" referencedTableName="ressource"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-18">
+        <dropForeignKeyConstraint baseTableName="AFFECTATION" constraintName="FK_AFFECTATION_AFFECTATION_DEMANDEE_PAR_ID"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-19">
+        <dropForeignKeyConstraint baseTableName="AFFECTATION" constraintName="FK_AFFECTATION_AFFECTATION_VALIDEE_PAR_ID"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-20">
+        <dropForeignKeyConstraint baseTableName="AFFECTATION" constraintName="FK_AFFECTATION_RESSOURCE_AFFECTEE_ID"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-21">
+        <dropForeignKeyConstraint baseTableName="DOMAINE" constraintName="FK_DOMAINE_RESPONSABLE_ID"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-22">
+        <dropForeignKeyConstraint baseTableName="MISSION" constraintName="FK_MISSION_MISSION_DEFINIT_PAR_ID"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-23">
+        <dropForeignKeyConstraint baseTableName="RESPONSABILITE_AFFECTATION" constraintName="FK_RESPONSABILITE_AFFECTATION_RESPONSABLE_RESSOURCE_MOBILE_ID"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-24">
+        <dropForeignKeyConstraint baseTableName="RESPONSABILITE_AFFECTATION" constraintName="FK_RESPONSABILITE_AFFECTATION_RESSOURCE_MOBILE_ID"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-25">
+        <dropColumn columnName="AFFECTATION_DEMANDEE_PAR_ID" tableName="AFFECTATION"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-26">
+        <dropColumn columnName="AFFECTATION_VALIDEE_PAR_ID" tableName="AFFECTATION"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-27">
+        <dropColumn columnName="ID" tableName="RESSOURCE"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-28">
+        <dropColumn columnName="MISSION_DEFINIT_PAR_ID" tableName="MISSION"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-29">
+        <dropColumn columnName="RESPONSABLE_ID" tableName="DOMAINE"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-30">
+        <dropColumn columnName="RESPONSABLE_RESSOURCE_MOBILE_ID" tableName="RESPONSABILITE_AFFECTATION"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-31">
+        <dropColumn columnName="RESSOURCE_AFFECTEE_ID" tableName="AFFECTATION"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-32">
+        <dropColumn columnName="RESSOURCE_MOBILE_ID" tableName="RESPONSABILITE_AFFECTATION"/>
+    </changeSet>
+    <changeSet author="GYL (generated)" id="1522242064835-33">
+        <dropPrimaryKey tableName="ressource"/>
+        <addPrimaryKey columnNames="user_id" constraintName="ressourcePK" tableName="ressource"/>
+    </changeSet>
+</databaseChangeLog>

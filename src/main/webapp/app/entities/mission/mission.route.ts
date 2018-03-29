@@ -6,6 +6,9 @@ import { MissionDetailComponent } from './mission-detail.component';
 import { MissionPopupComponent } from './mission-dialog.component';
 import { MissionDeletePopupComponent } from './mission-delete-dialog.component';
 
+import { MissionVMComponent } from './mission-vm.component';
+import { MissionNewComponent } from './mission-new.component';
+
 export const missionRoute: Routes = [
     {
         path: 'mission',
@@ -23,7 +26,27 @@ export const missionRoute: Routes = [
             pageTitle: 'plamobApp.mission.home.title'
         },
         canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'fiche-mission',
+        component: MissionVMComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'plamobApp.mission.home.title'
+        },
+        canActivate: [UserRouteAccessService],
+        outlet: 'fiche-mission'
+    },
+    {
+        path: 'nouvelle-mission',
+        component: MissionNewComponent,
+        data: {
+            authorities: ['ROLE_USER'],
+            pageTitle: 'plamobApp.mission.home.title'
+        },
+        canActivate: [UserRouteAccessService]
     }
+
 ];
 
 export const missionPopupRoute: Routes = [
