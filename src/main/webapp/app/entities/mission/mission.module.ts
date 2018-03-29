@@ -17,6 +17,8 @@ import {
     MissionNewComponent
 } from './';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 const ENTITY_STATES = [
     ...missionRoute,
     ...missionPopupRoute,
@@ -25,7 +27,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         PlamobSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        NgbModule
     ],
     declarations: [
         MissionComponent,

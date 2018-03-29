@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
 
     /********/
     username: string;
-    password:string;
-    rememberMe:boolean;
+    password: string;
+    rememberMe: boolean;
     /********/
 
     constructor(
@@ -79,8 +79,6 @@ export class HomeComponent implements OnInit {
             this.authenticationError = true;
         });*/
     }
-
-
 
     /*login() {
         this.modalRef = this.loginModalService.open();
