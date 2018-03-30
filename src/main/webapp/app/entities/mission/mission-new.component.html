@@ -90,72 +90,108 @@
                     <!--[/Affectations]-->
                     <ngb-tab title="Intervenants">
                         <ng-template ngbTabContent>
-                                <div class="mt-3 ml-3 w-75">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <select class="form-control">
-                                                    <option>Choix Intervenant</option>
-                                                    <option>Ressources 1</option>
-                                                    <option>Ressources 2</option>
-                                                    <option>Ressources 3</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <button type="button" class="btn btn-secondary pull-right">Ajouter intervenant</button>
-                                            </div>
-                                        </div>
-                                        <!--[/row]-->
-                                        <div class="mt-3">
-                                            <table class="table">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                        <th scope="col">Nom Prénom</th>
-                                                        <th scope="col">Tigramme</th>
-                                                        <th scope="col">Rôle</th>
-                                                        <th scope="col">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Geoffrey Van Dooren</td>
-                                                        <td>GVD</td>
-                                                        <td>Architecte</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Geoffrey Van Dooren</td>
-                                                        <td>GVD</td>
-                                                        <td>Architecte</td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                            <div class="mt-3 ml-3 w-75">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <select class="form-control">
+                                            <option>Choix Intervenant</option>
+                                            <option>Ressources 1</option>
+                                            <option>Ressources 2</option>
+                                            <option>Ressources 3</option>
+                                        </select>
                                     </div>
+                                    <div class="col-md-4">
+                                        <button type="button" class="btn btn-secondary pull-right">Ajouter intervenant</button>
+                                    </div>
+                                </div>
+                                <!--[/row]-->
+                                <div class="mt-3">
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Nom Prénom</th>
+                                                <th scope="col">Tigramme</th>
+                                                <th scope="col">Rôle</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Geoffrey Van Dooren</td>
+                                                <td>GVD</td>
+                                                <td>Architecte</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Geoffrey Van Dooren</td>
+                                                <td>GVD</td>
+                                                <td>Architecte</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </ng-template>
                     </ngb-tab>
                     <!--[/Intervenants]-->
                     <ngb-tab title="Livrables">
                         <ng-template ngbTabContent>
-                            <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam.
-                                Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus
-                                eget tincidunt eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar
-                                arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat
-                                neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod
-                                facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis
-                                dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies
-                                in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                            <div class="row  mt-3 ml-3">
+                                <div class="col-md-4 border border-primary">
+                                    <input type="number" class="form-control mb-2 mt-3 w-50" placeholder="Numéro">
+                                    <input type="date" class="form-control mb-2 w-75 d-inline mr-2"> 
+                                    <button class="btn btn-secondary btn-sm">
+                                            <span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    </button>
+                                    <input type="text" class="form-control mb-2" placeholder="Livrable">
+                                    <button type="button" class="btn btn-primary btn-sm pull-right mb-3 mt-2">Ajouter livrable</button>
+                                </div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-6 border border-primary">
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Numéro</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Livrable</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>01/04/2018</td>
+                                                <td>toto tutu ruru fffffffffff rrrrrrh  ggg</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>01/04/2018</td>
+                                                <td>toto tutu ruru</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
                         </ng-template>
                     </ngb-tab>
                     <!--[/Livrables]-->
                 </ngb-tabset>
             </div>
 
-            <div class="mt-3 pull-right">
+            <div class="mt-5 pull-right">
                 <button class="btn btn-warning">
                     <span class="fa fa-times-circle"></span>
                     Abandonner
