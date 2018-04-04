@@ -7,7 +7,6 @@ import { PlanningService } from './planning.service';
 
 @NgModule({
     imports: [
-        //PlamobSharedModule,
         RouterModule.forChild(planningRoute)
     ],
     declarations: [
@@ -23,5 +22,4 @@ import { PlanningService } from './planning.service';
 
 })
 export class PlanningModule {
-
 }

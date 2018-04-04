@@ -129,7 +129,6 @@ public class UserResource {
             throw new EmailAlreadyUsedException();
         } else {
             RessourceVM newRessourceVM = userService.createUserAndRessource(ressourceVM);
-            //mailService.sendCreationEmail(newUser);
 
             return ResponseEntity.ok().build();
         }
