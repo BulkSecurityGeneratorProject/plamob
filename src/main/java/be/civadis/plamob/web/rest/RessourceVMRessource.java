@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class RessourceVMRessource {
      * @throws BadRequestAlertException 400 (Bad Request) if the login or email is already in use
      */
     @PostMapping("/ressourceVM")
-    public ResponseEntity<RessourceVM> createRessourceVM(@RequestBody RessourceVM ressourceVM) throws URISyntaxException {
+    public ResponseEntity<RessourceVM> createRessourceVM(@Valid @RequestBody RessourceVM ressourceVM) throws URISyntaxException {
         log.debug("REST request to save User and Ressource : {}", ressourceVM);
 
         if (ressourceVM.getId() != null) {
