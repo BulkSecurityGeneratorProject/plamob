@@ -21,12 +21,15 @@ public class ResponsabiliteAffectation implements Serializable {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "affectation_id")
     private Affectation affectation;
 
     @ManyToOne
+    @JoinColumn(name = "ressource_mobile_id")
     private Ressource ressourceMobile;
 
     @ManyToOne
+    @JoinColumn(name = "responsable_ressource_mobile_id")
     private Ressource responsableRessourceMobile;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

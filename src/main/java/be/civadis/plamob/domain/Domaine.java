@@ -24,6 +24,7 @@ public class Domaine implements Serializable {
     private String libelle;
 
     @ManyToOne
+    @JoinColumn(name = "responsable_id")
     private Ressource responsable;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

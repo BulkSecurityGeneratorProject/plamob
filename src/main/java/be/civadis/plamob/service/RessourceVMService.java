@@ -25,6 +25,8 @@ public class RessourceVMService {
     private UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    private User user;
+
     @Autowired
     public RessourceVMService(RessourceRepository ressourceRepository, UserRepository userRepository,
                               PasswordEncoder passwordEncoder) {
@@ -41,7 +43,7 @@ public class RessourceVMService {
      */
     public RessourceVM createRessourceVM(RessourceVM ressourceVM) {
         // Create User
-        User user = new User();
+        user = new User();
         Set<Authority> authorities = new HashSet<>();
         ressourceVM.getAuthorities().forEach(
             e -> {
@@ -88,6 +90,10 @@ public class RessourceVMService {
         }
 
         return ressourceVMs;
+    }
+
+    public User getUser() {
+        return user;
     }
 
 

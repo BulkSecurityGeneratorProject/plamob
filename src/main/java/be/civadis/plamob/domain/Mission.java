@@ -42,9 +42,11 @@ public class Mission implements Serializable {
     private ETAT_MISSION etat;
 
     @ManyToOne
+    @JoinColumn(name = "domaine_concerne_id")
     private Domaine domaineConcerne;
 
     @ManyToOne
+    @JoinColumn(name = "mission_definit_par_id")
     private Ressource missionDefinitPar;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

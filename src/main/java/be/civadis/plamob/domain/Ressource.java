@@ -33,11 +33,11 @@ public class Ressource implements Serializable {
     private TYPE_RESSOURCE typeRess;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn(unique = true, name = "profil_id")
     private Profil profil;
 
     @OneToOne
-    @MapsId
+    @JoinColumn(name = "user_id")
     private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

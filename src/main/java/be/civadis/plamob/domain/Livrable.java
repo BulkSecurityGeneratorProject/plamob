@@ -34,6 +34,7 @@ public class Livrable implements Serializable {
     private String remarques;
 
     @ManyToOne
+    @JoinColumn(name = "mission_id")
     private Mission mission;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

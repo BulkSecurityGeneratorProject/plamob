@@ -41,15 +41,19 @@ public class Affectation implements Serializable {
     private Profil profil;
 
     @ManyToOne
+    @JoinColumn(name = "affectation_demandee_par_id")
     private Ressource affectationDemandeePar;
 
     @ManyToOne
+    @JoinColumn(name = "affectation_validee_par_id")
     private Ressource affectationValideePar;
 
     @ManyToOne
+    @JoinColumn(name = "ressource_affectee_id")
     private Ressource ressourceAffectee;
 
     @ManyToOne
+    @JoinColumn(name = "livrable_id")
     private Livrable livrable;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
